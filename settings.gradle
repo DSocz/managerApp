@@ -1,0 +1,4 @@
+rootProject.name = 'managerapp'
+include 'managerapp-server'
+include 'managerapp-frontend'
+

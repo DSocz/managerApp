@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="managerapp-server/src/main/java"/>
+	<classpathentry kind="lib" path="build/libs/managerapp-1.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="managerapp-frontend/build/libs/managerapp-frontend.jar"/>
+	<classpathentry kind="lib" path="managerapp-server/build/libs/managerapp-server.jar"/>
+	<classpathentry kind="output" path="managerapp-server/build/classes/java/main"/>
+</classpath>
