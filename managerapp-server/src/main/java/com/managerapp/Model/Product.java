@@ -3,6 +3,7 @@ package com.managerapp.Model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Getter
 @Setter
@@ -11,13 +12,16 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "product", schema = "managerapp")
-public class Product {
+public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "product_id_product_seq")
-    private Long idProduct;
+    private Long productId;
     private String name;
     private String inci;
-    private Boolean eco;
-    private Boolean crueltyFree;
+    private Boolean goodComposition;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_brandid")
+    private Brand brandid;
 }

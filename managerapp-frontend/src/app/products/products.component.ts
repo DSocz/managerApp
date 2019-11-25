@@ -16,8 +16,14 @@ export class ProductsComponent implements OnInit {
   ngOnInit() {
     this.ProductsServiceService.findAll()
     .subscribe(data => {
+      console.log(data);
       this.products = data;
     })
   }
 
+  onDelete(product: Product){
+    this.ProductsServiceService.deleteOne(product.productId).subscribe(
+      () => {this.products.splice(this.products.indexOf(product), 1);
+      });
+  }
 }

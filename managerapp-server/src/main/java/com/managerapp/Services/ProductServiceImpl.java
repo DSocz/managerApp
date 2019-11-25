@@ -1,5 +1,6 @@
 package com.managerapp.Services;
 
+import com.managerapp.Model.Product;
 import com.managerapp.Repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,4 +17,10 @@ public class ProductServiceImpl implements ProductService {
     public List findAll() {
         return productRepository.findAll();
     }
+
+    @Override
+    public void deleteOne(Long productId) {
+        productRepository.deleteById(productId);
+    }
+
 }

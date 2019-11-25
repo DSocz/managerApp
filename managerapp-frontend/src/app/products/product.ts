@@ -1,6 +1,9 @@
+import { Brand } from '../model/brand';
+
 export class Product {
+  productId: number;
   name: string;
   inci: string;
-  eco: boolean;
-  crueltyFree: boolean;
+  goodComposition: boolean;
+  brandid: Brand;
 }
