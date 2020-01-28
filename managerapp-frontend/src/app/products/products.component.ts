@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from './product';
-import { ProductsServiceService } from '../services/productsServices/products-service.service';
+import { ProductsServiceService } from './products-service.service';
 
 @Component({
   selector: 'app-products',
@@ -10,11 +10,12 @@ import { ProductsServiceService } from '../services/productsServices/products-se
 export class ProductsComponent implements OnInit {
 
   products: Product[];
+  flag: boolean;
 
-  constructor(private ProductsServiceService: ProductsServiceService) { }
+  constructor(private productsServiceService: ProductsServiceService) { }
 
   ngOnInit() {
-    this.ProductsServiceService.findAll()
+    this.productsServiceService.findAll()
     .subscribe(data => {
       console.log(data);
       this.products = data;
@@ -22,8 +23,12 @@ export class ProductsComponent implements OnInit {
   }
 
   onDelete(product: Product){
-    this.ProductsServiceService.deleteOne(product.productId).subscribe(
-      () => {this.products.splice(this.products.indexOf(product), 1);
-      });
+
+    console.log('inside onDelete 1')
+
+    this.productsServiceService.confirmDelete('Delete the product', 'Are you f****** sure ... ?', product.productId)
+    .then((confirmed) => this.flag = confirmed)
+    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+    console.log('after onDelete 2');
   }
 }
