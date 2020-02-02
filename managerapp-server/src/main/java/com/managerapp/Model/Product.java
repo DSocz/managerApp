@@ -5,11 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@EqualsAndHashCode
-@AllArgsConstructor
+@Data
 @Entity
 @Table(name = "product", schema = "managerapp")
 public class Product implements Serializable {
