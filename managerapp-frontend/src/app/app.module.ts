@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +14,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ProductsComponent } from './products/products.component';
 import { DeleteConfirmationDialogComponent } from './confirmationDialogs/delete-confirmation-dialog/delete-confirmation-dialog.component';
 import { DeleteConfirmationDialogService } from './confirmationDialogs/delete-confirmation-dialog/delete-confirmation-dialog.service';
+import { AddProductComponent } from './products/add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -19,17 +22,23 @@ import { DeleteConfirmationDialogService } from './confirmationDialogs/delete-co
     HomepageComponent,
     PageNotFoundComponent,
     ProductsComponent,
-    DeleteConfirmationDialogComponent
+    DeleteConfirmationDialogComponent,
+    AddProductComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    MatDialogModule
   ],
   providers: [DeleteConfirmationDialogService],
   bootstrap: [AppComponent],
-  entryComponents: [DeleteConfirmationDialogComponent],
+  entryComponents: [
+    DeleteConfirmationDialogComponent,
+    AddProductComponent
+  ],
 })
 export class AppModule { }

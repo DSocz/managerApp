@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from './product';
 import { ProductsServiceService } from './products-service.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AddProductComponent } from './add-product/add-product.component';
 
 @Component({
   selector: 'app-products',
@@ -12,7 +14,8 @@ export class ProductsComponent implements OnInit {
   products: Product[];
   flag: boolean;
 
-  constructor(private productsServiceService: ProductsServiceService) { }
+  constructor(private productsServiceService: ProductsServiceService,
+              public dialog: MatDialog) { }
 
   ngOnInit() {
     this.productsServiceService.findAll()
@@ -31,4 +34,14 @@ export class ProductsComponent implements OnInit {
     .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
     console.log('after onDelete 2');
   }
+
+  openAddProductDialog(): void {
+    const dialogRef = this.dialog.open(AddProductComponent, {
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed')
+    });
+  }
+
 }
