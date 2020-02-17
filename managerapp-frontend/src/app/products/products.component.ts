@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from './product';
 import { ProductsServiceService } from './products-service.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddProductComponent } from './add-product/add-product.component';
 
 @Component({
@@ -36,8 +36,13 @@ export class ProductsComponent implements OnInit {
   }
 
   openAddProductDialog(): void {
-    const dialogRef = this.dialog.open(AddProductComponent, {
-    });
+
+    const dialogConfig = new MatDialogConfig();
+        dialogConfig.id = "addProductDialog";
+        dialogConfig.size = 'sm'|'lg' = 'sm';
+        dialogConfig.panelClass = 'custom-dialog-container';
+
+    const dialogRef = this.dialog.open(AddProductComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed')

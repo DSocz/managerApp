@@ -1,17 +1,19 @@
-import { Component, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Product } from '../product';
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
+  styleUrls: ['./add-product.component.css']
 })
-export class AddProductComponent {
+export class AddProductComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<AddProductComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Product) {}
+  constructor(public dialogRef: MatDialogRef<AddProductComponent>) {}
 
-    onNoClick(): void {
+  ngOnInit() { }
+
+  onNoClick(): void {
     this.dialogRef.close();
   }
 
