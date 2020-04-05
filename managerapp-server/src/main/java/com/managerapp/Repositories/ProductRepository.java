@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface ProductRepository extends CrudRepository<Product, Long> {
 
-    @Query("SELECT p FROM Product p INNER JOIN FETCH p.brandid")
-    List findAll();
+    @Query("SELECT p FROM Product p INNER JOIN FETCH p.brand")
+    List<Product> findAll();
 
     void deleteById(Long productId);
 
