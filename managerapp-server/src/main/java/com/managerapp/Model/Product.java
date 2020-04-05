@@ -11,13 +11,12 @@ import java.io.Serializable;
 public class Product implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "product_id_product_seq")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "managerapp.product_id_product_seq")
     private Long productId;
     private String name;
     private String inci;
-    private Boolean goodComposition;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_brandid")
-    private Brand brandid;
+    private Brand brand;
 }

@@ -1,34 +1,30 @@
 <div class="container">
   <div class="bs-docs-section">
     <div class="bs-docs-section">
-
       <div class="row">
         <div class="col-lg-12">
-
-          <div class="page-header" >
+          <div class="page-header">
             <h3 style="margin-top: 70px" id="tables">Products</h3>
           </div>
           <div class="bs-component">
             <table class="table table-hover">
               <thead>
-              <tr class="table-dark">
-                <th scope="col">Brand</th>
-                <th scope="col">Name</th>
-                <th scope="col">INCI</th>
-                <th scope="col">ECO</th>
-                <th scope="col">Cruelty Free</th>
-                <th scope="col"><button type="button" class="btn btn-success" (click)="openAddProductDialog()">Add Product</button></th>
-              </tr>
+                <tr class="table-dark">
+                  <th scope="col">Brand</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">INCI</th>
+                  <th scope="col">Cruelty Free</th>
+                  <th scope="col"><button type="button" class="btn btn-success" (click)="openAddProductDialog()">Add Product</button></th>
+                </tr>
               </thead>
               <tbody>
-              <tr class="table-dark" *ngFor="let product of products">
-                <td>{{ product.brandid.brandName}}</td>
-                <td style="width:200px" >{{ product.name }}</td>
-                <td style="width:510px">{{ product.inci }}</td>
-                <td>{{ product.goodComposition ? 'Yes' : 'No'}}</td>
-                <td>{{ product.brandid.crueltyFree ? 'Yes' : 'No'}}</td>
-                <td><button type="button" class="btn btn-secondary">Edit</button>&nbsp;&nbsp;<button (click)="onDelete(product)" type="button" class="btn btn-danger">Delete</button></td>
-              </tr>
+                <tr class="table-dark" *ngFor="let product of products">
+                  <td>{{ product.brand.brandName}}</td>
+                  <td style="width:200px">{{ product.name }}</td>
+                  <td style="width:510px">{{ product.inci }}</td>
+                  <td>{{ product.brand.crueltyFree ? 'Yes' : 'No'}}</td>
+                  <td><button type="button" class="btn btn-secondary">Edit</button>&nbsp;&nbsp;<button (click)="onDelete(product)" type="button" class="btn btn-danger">Delete</button></td>
+                </tr>
               </tbody>
             </table>
           </div>

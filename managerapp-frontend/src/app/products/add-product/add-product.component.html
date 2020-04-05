@@ -1,26 +1,28 @@
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">New Product</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" matDialogClose>
-          <span aria-hidden="true">&times;</span>
-        </button>
+<form (ngSubmit)="saveNewProduct()">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">New Product</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" matDialogClose>
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <h6>Name:</h6>
+      <input type="text" class="form-control" placeholder=" " id="productName" [(ngModel)]="newProduct.name" name="productName" required>
+      <div class="form-group">
+        <h6 for="brand" style='padding-top: 10px'>Brand</h6>
+        <select class="form-control" id="brand" [(ngModel)]="newProduct.brand" name="brand" required>
+          <option *ngFor="let brand of brands" [ngValue]=brand>{{brand.brandName}}</option>
+        </select>
       </div>
-      <div class="modal-body">
-        <h6>Name:</h6>
-        <input type="text" class="form-control" placeholder=" " id="inputDefault">
-        <div class="form-group">
-            <h6 for="brand" style='padding-top: 10px'>Brand</h6>
-              <select class="form-control" id="brands" ngModel required>
-                <option *ngFor="let brand of brands" [value] = brand>{{brand.brandName}}</option>
-              </select>
-        </div>
-        <div class="form-group">
-          <h6 for="exampleTextarea">Name:</h6>
-          <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" matDialogClose >Close</button>
+      <div class="form-group">
+        <h6 for="productINCI">INCI:</h6>
+        <textarea class="form-control" rows="3" id="productINCI" [(ngModel)]="newProduct.inci" name="productINCI" required></textarea>
       </div>
     </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary">Save</button>
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" matDialogClose>Close</button>
+    </div>
+  </div>
+</form>
