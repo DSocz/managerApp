@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Product } from '../product';
+import { Brand } from '../../model/brand';
+import { AddProductService } from './add-product.service';
 
 @Component({
   selector: 'app-add-product',
@@ -9,12 +11,14 @@ import { Product } from '../product';
 })
 export class AddProductComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<AddProductComponent>) {}
+  brands: Brand[] = [];
 
-  ngOnInit() { }
+  constructor(public dialogRef: MatDialogRef<AddProductComponent>,
+              public addProductService: AddProductService) {}
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
+  ngOnInit() {
+    this.addProductService.findAllBrands().subscribe(data => { this.brands = data })
+   }
+
 
 }

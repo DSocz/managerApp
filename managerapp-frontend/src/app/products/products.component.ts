@@ -18,11 +18,7 @@ export class ProductsComponent implements OnInit {
               public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.productsServiceService.findAll()
-    .subscribe(data => {
-      console.log(data);
-      this.products = data;
-    })
+    this.productsServiceService.findAll().subscribe(data => { this.products = data })
   }
 
   onDelete(product: Product){
@@ -39,7 +35,6 @@ export class ProductsComponent implements OnInit {
 
     const dialogConfig = new MatDialogConfig();
         dialogConfig.id = "addProductDialog";
-        dialogConfig.size = 'sm'|'lg' = 'sm';
         dialogConfig.panelClass = 'custom-dialog-container';
 
     const dialogRef = this.dialog.open(AddProductComponent, dialogConfig);
