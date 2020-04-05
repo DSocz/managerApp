@@ -1,18 +1,32 @@
-import { Component, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Product } from '../product';
+import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
+import { Product } from '../../model/product';
+import { Brand } from '../../model/brand';
+import { BrandService } from '../../service/brand.service';
+import { ProductService } from '../../service/product.service';
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
+  styleUrls: ['./add-product.component.css']
 })
-export class AddProductComponent {
+export class AddProductComponent implements OnInit {
+
+  brands: Brand[] = [];
+  newProduct: Product = new Product();
 
   constructor(public dialogRef: MatDialogRef<AddProductComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Product) {}
+    public brandService: BrandService,
+    public productService: ProductService) { }
 
-    onNoClick(): void {
+  ngOnInit() {
+    this.brandService.findAllBrands().subscribe(data => { this.brands = data })
+  }
+
+  saveNewProduct(): void {
+    this.productService.saveNewProductInDB(this.newProduct).subscribe();
     this.dialogRef.close();
   }
+
 
 }

@@ -1,5 +1,7 @@
 export class Brand {
-  brandId : number;
-  brandName : String;
-  crueltyFree : boolean;
+  constructor(
+  public brandId?: number,
+  public brandName?: String,
+  public crueltyFree? : boolean
+){}
 }
