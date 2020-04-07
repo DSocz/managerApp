@@ -14,7 +14,7 @@
                   <th scope="col">Name</th>
                   <th scope="col">INCI</th>
                   <th scope="col">Cruelty Free</th>
-                  <th scope="col"><button type="button" class="btn btn-success" (click)="openAddProductDialog()">Add Product</button></th>
+                  <th scope="col"><button type="button" class="btn btn-success" (click)="addNewProduct()">Add Product</button></th>
                 </tr>
               </thead>
               <tbody>
@@ -23,7 +23,10 @@
                   <td style="width:200px">{{ product.name }}</td>
                   <td style="width:510px">{{ product.inci }}</td>
                   <td>{{ product.brand.crueltyFree ? 'Yes' : 'No'}}</td>
-                  <td><button type="button" class="btn btn-secondary">Edit</button>&nbsp;&nbsp;<button (click)="onDelete(product)" type="button" class="btn btn-danger">Delete</button></td>
+                  <td>
+                    <button type="button" class="btn btn-secondary" (click)="editProduct(product)">Edit</button>&nbsp;&nbsp;
+                    <button type="button" class="btn btn-danger" (click)="onDelete(product)" >Delete</button>
+                  </td>
                 </tr>
               </tbody>
             </table>
