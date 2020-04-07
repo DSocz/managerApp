@@ -29,17 +29,19 @@ export class ProductsComponent implements OnInit {
       .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }
 
-  openAddProductDialog(): void {
+  editProduct(product: Product) {
+    this.openAddProductDialog(product);
+  }
 
+  addNewProduct() {
+    this.openAddProductDialog(new Product());
+  }
+
+  private openAddProductDialog(product: Product): void {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.id = "addProductDialog";
     dialogConfig.panelClass = 'custom-dialog-container';
-
+    dialogConfig.data = product;
     const dialogRef = this.dialog.open(AddProductComponent, dialogConfig);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed')
-    });
   }
 
 }
