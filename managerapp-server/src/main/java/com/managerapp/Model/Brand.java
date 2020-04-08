@@ -2,6 +2,7 @@ package com.managerapp.Model;
 
 import lombok.*;
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Getter
 @Setter
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "brand", schema = "managerapp")
-public class Brand {
+public class Brand implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "managerapp.brand_brandid_seq")
