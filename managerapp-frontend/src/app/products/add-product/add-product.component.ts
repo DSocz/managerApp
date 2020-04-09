@@ -17,12 +17,14 @@ export class AddProductComponent implements OnInit {
   brands: Brand[] = [];
   product: Product;
   productForm: FormGroup;
+  windowTitle: string;
 
   constructor(public dialogRef: MatDialogRef<AddProductComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Product,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     public brandService: BrandService,
     public productService: ProductService) {
-    this.product = data;
+    this.product = data.product;
+    this.windowTitle = data.windowTitle;
   }
 
   ngOnInit() {

@@ -31,18 +31,17 @@ export class ProductsComponent implements OnInit {
   }
 
   editProduct(product: Product) {
-    this.openAddProductDialog(product);
+    this.openAddOrEditProductDialog(product, 'Edit product');
   }
 
   addNewProduct() {
-    this.openAddProductDialog(new Product());
+    this.openAddOrEditProductDialog(new Product(), 'Add product');
   }
 
-  private openAddProductDialog(product: Product): void {
+  private openAddOrEditProductDialog(product: Product, windowTitle: string): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.panelClass = 'custom-dialog-container';
-    dialogConfig.data = product;
+    dialogConfig.data = { product, windowTitle };
     const dialogRef = this.dialog.open(AddProductComponent, dialogConfig);
   }
-
 }
