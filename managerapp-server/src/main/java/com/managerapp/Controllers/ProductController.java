@@ -1,7 +1,9 @@
 package com.managerapp.Controllers;
 
 import com.managerapp.Model.Product;
+import com.managerapp.Model.ProductSnap;
 import com.managerapp.Services.ProductService;
+import com.managerapp.Services.ProductSnapService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,9 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private ProductSnapService productSnapService;
 
     @GetMapping(path = "/products")
     public List findAll() {
@@ -30,4 +35,13 @@ public class ProductController {
         return productService.save(newProduct);
     }
 
+    @GetMapping(path = "/getAllInUseProductSnaps")
+    public List<ProductSnap> getAllInUseProductSnaps(){
+        return productSnapService.getAllInUseProductSnaps();
+    }
+
+    @GetMapping(path = "/getAllNotInUseProductSnaps")
+    public List<ProductSnap> getAllNotInUseProductSnaps(){
+        return productSnapService.getAllNotInUseProductSnaps();
+    }
 }

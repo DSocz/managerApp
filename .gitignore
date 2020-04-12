@@ -28,3 +28,4 @@ build/*
 ./managerapp-server/build
 */META-INF/*
 */managerapp-server/build
+managerapp-server/build/classes/java/main/META-INF/managerapp.managerapp-server.main.kotlin_module

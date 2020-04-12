@@ -16,6 +16,7 @@ import { ProductsComponent } from './products/products.component';
 import { DeleteConfirmationDialogComponent } from './confirmationDialogs/delete-confirmation-dialog/delete-confirmation-dialog.component';
 import { DeleteConfirmationDialogService } from './confirmationDialogs/delete-confirmation-dialog/delete-confirmation-dialog.service';
 import { AddProductComponent } from './products/add-product/add-product.component';
+import { ProductSnapComponent } from './products/product-snap/product-snap.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AddProductComponent } from './products/add-product/add-product.componen
     PageNotFoundComponent,
     ProductsComponent,
     DeleteConfirmationDialogComponent,
-    AddProductComponent
+    AddProductComponent,
+    ProductSnapComponent
   ],
   imports: [
     HttpClientModule,
