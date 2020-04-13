@@ -10,12 +10,19 @@
         </div>
         <div class="modal-body">
           <h6 style='padding-top: 10px'>Name:</h6>
-          <input type="text" class="form-control" placeholder=" " id="productName" formControlName="productName">
+          <select class="form-control" id="productName" formControlName="productName" [compareWith]="compareProducts">
+            <option *ngFor="let product of products" [ngValue]="product">{{ product.name }}</option>
+          </select>
 
           <fieldset>
             <h6 style='padding-top: 10px'>Brand name:</h6>
             <input class="form-control" id="readOnlyInput" type="text" placeholder=" " readonly="" formControlName="productBrand">
           </fieldset>
+
+          <h6 for="usageLevel" style='padding-top: 10px'>Usage level</h6>
+          <select class="form-control" id="usageLevel" formControlName="usageLevel">
+            <option *ngFor="let usageLevel of usageLevels" [ngValue]="usageLevel">{{ usageLevel }}</option>
+          </select>
 
           <div>
             <h6 style='padding-top: 10px'>Start date:</h6>
@@ -23,6 +30,21 @@
             <mat-datepicker-toggle [for]="startDatepicker"></mat-datepicker-toggle>
             <mat-datepicker #startDatepicker></mat-datepicker>
           </div>
+          <div>
+            <h6 style='padding-top: 10px'>End date:</h6>
+            <input type="input" class="form-control-date" [matDatepicker]="endDatepicker" formControlName="endDate">
+            <mat-datepicker-toggle [for]="endDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #endDatepicker></mat-datepicker>
+          </div>
+
+          <h6 style='padding-top: 10px'>Price:</h6>
+          <input type="text" class="form-control" placeholder=" " id="price" formControlName="price">
+
+          <h6 for="shop" style='padding-top: 10px'>Shop</h6>
+          <select class="form-control" id="shop" formControlName="shop" [compareWith]="compareShops">
+            <option *ngFor="let shop of shops" [ngValue]="shop">{{ shop.name }}</option>
+          </select>
+
 
         </div>
 
