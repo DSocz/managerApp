@@ -7,6 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +20,8 @@ import { DeleteConfirmationDialogComponent } from './confirmationDialogs/delete-
 import { DeleteConfirmationDialogService } from './confirmationDialogs/delete-confirmation-dialog/delete-confirmation-dialog.service';
 import { AddProductComponent } from './products/add-product/add-product.component';
 import { ProductSnapComponent } from './products/product-snap/product-snap.component';
+import { AddEditProductSnapComponent } from './products/product-snap/add-edit-product-snap/add-edit-product-snap.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +31,8 @@ import { ProductSnapComponent } from './products/product-snap/product-snap.compo
     ProductsComponent,
     DeleteConfirmationDialogComponent,
     AddProductComponent,
-    ProductSnapComponent
+    ProductSnapComponent,
+    AddEditProductSnapComponent
   ],
   imports: [
     HttpClientModule,
@@ -36,13 +42,22 @@ import { ProductSnapComponent } from './products/product-snap/product-snap.compo
     FormsModule,
     NgbModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+  ],
+  exports: [
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [DeleteConfirmationDialogService],
   bootstrap: [AppComponent],
   entryComponents: [
     DeleteConfirmationDialogComponent,
-    AddProductComponent
+    AddProductComponent,
+    AddEditProductSnapComponent
   ],
 })
 export class AppModule { }

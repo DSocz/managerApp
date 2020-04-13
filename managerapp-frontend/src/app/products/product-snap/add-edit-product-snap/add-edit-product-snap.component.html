@@ -1,0 +1,37 @@
+  <div class="container">
+
+    <form (ngSubmit)="saveProductSnap()" [formGroup]="productSnapForm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{windowTitle}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" matDialogClose>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h6 style='padding-top: 10px'>Name:</h6>
+          <input type="text" class="form-control" placeholder=" " id="productName" formControlName="productName">
+
+          <fieldset>
+            <h6 style='padding-top: 10px'>Brand name:</h6>
+            <input class="form-control" id="readOnlyInput" type="text" placeholder=" " readonly="" formControlName="productBrand">
+          </fieldset>
+
+          <div>
+            <h6 style='padding-top: 10px'>Start date:</h6>
+            <input type="input" class="form-control-date" [matDatepicker]="startDatepicker" formControlName="startDate">
+            <mat-datepicker-toggle [for]="startDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #startDatepicker></mat-datepicker>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" matDialogClose>Close</button>
+        </div>
+
+      </div>
+    </form>
+
+  </div>

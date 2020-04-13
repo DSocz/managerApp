@@ -5,7 +5,7 @@ export class ProductSnap {
   constructor(
     public productSnapId?: number,
     public startDate?: Date,
-    public enddate?: Date,
+    public endDate?: Date,
     public product?: Product,
     public usageLevel?: String,
     public shop?: Shop,
