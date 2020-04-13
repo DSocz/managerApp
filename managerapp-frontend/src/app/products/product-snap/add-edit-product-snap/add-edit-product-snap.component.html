@@ -44,10 +44,7 @@
           <select class="form-control" id="shop" formControlName="shop" [compareWith]="compareShops">
             <option *ngFor="let shop of shops" [ngValue]="shop">{{ shop.name }}</option>
           </select>
-
-
         </div>
-
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary">Save</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal" matDialogClose>Close</button>

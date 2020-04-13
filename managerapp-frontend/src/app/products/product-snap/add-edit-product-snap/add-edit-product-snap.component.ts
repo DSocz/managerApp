@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductSnap } from '../../../model/product-snap';
 import { Shop } from '../../../model/shop';
 import { Product } from '../../../model/product';
@@ -33,13 +33,13 @@ export class AddEditProductSnapComponent implements OnInit {
 
   ngOnInit() {
     this.productSnapForm = new FormGroup({
-      productName: new FormControl(this.productSnap.product),
-      productBrand: new FormControl(this.productSnap.product.brand.brandName),
-      startDate: new FormControl(this.productSnap.startDate),
-      endDate: new FormControl(this.productSnap.endDate),
-      usageLevel: new FormControl(this.productSnap.usageLevel),
-      price: new FormControl(this.productSnap.price),
-      shop: new FormControl(this.productSnap.shop)
+      productName: new FormControl(this.productSnap.product, [Validators.required]),
+      productBrand: new FormControl(this.productSnap.product.brand.brandName, [Validators.required]),
+      startDate: new FormControl(this.productSnap.startDate, [Validators.required]),
+      endDate: new FormControl(this.productSnap.endDate, [Validators.required]),
+      usageLevel: new FormControl(this.productSnap.usageLevel, [Validators.required]),
+      price: new FormControl(this.productSnap.price, [Validators.required]),
+      shop: new FormControl(this.productSnap.shop, [Validators.required])
     })
   }
 

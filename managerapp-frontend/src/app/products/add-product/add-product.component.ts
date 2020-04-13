@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Product } from '../../model/product';
 import { Brand } from '../../model/brand';
@@ -30,9 +30,9 @@ export class AddProductComponent implements OnInit {
   ngOnInit() {
     this.brandService.findAllBrands().subscribe(data => { this.brands = data })
     this.productForm = new FormGroup({
-      productName: new FormControl(this.product.name),
-      selectedBrand: new FormControl(this.product.brand),
-      productInci: new FormControl(this.product.inci)
+      productName: new FormControl(this.product.name, [Validators.required]),
+      selectedBrand: new FormControl(this.product.brand, [Validators.required]),
+      productInci: new FormControl(this.product.inci, [Validators.required])
     });
   }
 
