@@ -10,13 +10,13 @@
         </div>
         <div class="modal-body">
           <h6 style='padding-top: 10px'>Name:</h6>
-          <select class="form-control" id="productName" formControlName="productName" [compareWith]="compareProducts">
+          <select class="form-control" id="productName" formControlName="product" [compareWith]="compareProducts" (change)="changedProduct($event.target.value)">
             <option *ngFor="let product of products" [ngValue]="product">{{ product.name }}</option>
           </select>
 
           <fieldset>
             <h6 style='padding-top: 10px'>Brand name:</h6>
-            <input class="form-control" id="readOnlyInput" type="text" placeholder=" " readonly="" formControlName="productBrand">
+            <input class="form-control" id="productBrand" type="text" placeholder=" " formControlName="productBrand">
           </fieldset>
 
           <h6 for="usageLevel" style='padding-top: 10px'>Usage level</h6>

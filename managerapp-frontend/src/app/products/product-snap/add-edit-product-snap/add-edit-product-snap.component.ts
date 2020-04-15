@@ -17,6 +17,7 @@ export class AddEditProductSnapComponent implements OnInit {
   private productSnapForm: FormGroup;
   private productSnap: ProductSnap;
   windowTitle: string;
+  private isNewProductSnap: boolean;
   usageLevels: string[] = ['Plenty of', '50/50', 'Almost done'];
   shops: Shop[];
   products: Product[];
@@ -27,19 +28,20 @@ export class AddEditProductSnapComponent implements OnInit {
     private shopService: ShopService) {
     this.windowTitle = data.windowTitle;
     this.productSnap = data.productSnap;
+    this.isNewProductSnap = data.isNewProductSnap;
     this.productService.findAll().subscribe(data => { this.products = data });
     this.shopService.findAllShops().subscribe(data => { this.shops = data });
   }
 
   ngOnInit() {
     this.productSnapForm = new FormGroup({
-      productName: new FormControl(this.productSnap.product, [Validators.required]),
-      productBrand: new FormControl(this.productSnap.product.brand.brandName, [Validators.required]),
+      product: new FormControl({ value: this.productSnap.product, disabled: !this.isNewProductSnap }, [Validators.required]),
+      productBrand: new FormControl({ value: this.productSnap.product.brand.brandName, disabled: true }, [Validators.required]),
       startDate: new FormControl(this.productSnap.startDate, [Validators.required]),
       endDate: new FormControl(this.productSnap.endDate, [Validators.required]),
       usageLevel: new FormControl(this.productSnap.usageLevel, [Validators.required]),
-      price: new FormControl(this.productSnap.price, [Validators.required]),
-      shop: new FormControl(this.productSnap.shop, [Validators.required])
+      price: new FormControl({ value: this.productSnap.price, disabled: !this.isNewProductSnap }, [Validators.required]),
+      shop: new FormControl({ value: this.productSnap.shop, disabled: !this.isNewProductSnap }, [Validators.required])
     })
   }
 
@@ -49,5 +51,9 @@ export class AddEditProductSnapComponent implements OnInit {
 
   compareShops(s1: Shop, s2: Shop): boolean {
     return s1 && s2 ? s1.shopId === s2.shopId : s1 === s2;
+  }
+
+  changedProduct(){
+    this.productSnapForm.patchValue({productBrand: this.productSnapForm.value.product.brand.brandName})
   }
 }

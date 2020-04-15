@@ -5,6 +5,8 @@ import { AddEditProductSnapComponent } from './add-edit-product-snap/add-edit-pr
 
 import { ProductService } from '../../service/product.service';
 import { ProductSnap } from '../../model/product-snap';
+import { Product } from '../../model/product';
+import { Brand } from '../../model/brand';
 
 @Component({
   selector: 'app-product-snap',
@@ -13,11 +15,14 @@ import { ProductSnap } from '../../model/product-snap';
 })
 export class ProductSnapComponent implements OnInit {
 
-  private productSnaps: ProductSnap[];
+  productSnaps: ProductSnap[];
   private inUseCheckbox: boolean = true;
+  private emptyProductSnap: ProductSnap = new ProductSnap();
 
   constructor(private productService: ProductService,
-  public dialog: MatDialog) {
+    public dialog: MatDialog) {
+    this.emptyProductSnap.product = new Product();
+    this.emptyProductSnap.product.brand = new Brand();
   }
 
   ngOnInit() {
@@ -33,17 +38,18 @@ export class ProductSnapComponent implements OnInit {
   }
 
   editProductSnap(productSnap: ProductSnap) {
-    this.openAddOrEditProductSnapDialog(productSnap, 'Edit product');
+    this.openAddOrEditProductSnapDialog(productSnap, 'Edit product', false);
   }
 
   addNewProductSnap() {
-    this.openAddOrEditProductSnapDialog(new ProductSnap(), 'Add product');
+    this.openAddOrEditProductSnapDialog(this.emptyProductSnap, 'Add product', true);
   }
 
-  private openAddOrEditProductSnapDialog(productSnap: ProductSnap, windowTitle: string): void {
+  private openAddOrEditProductSnapDialog(productSnap: ProductSnap, windowTitle: string,
+    isNewProductSnap: boolean): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.panelClass = 'custom-dialog-container';
-    dialogConfig.data = { productSnap, windowTitle };
+    dialogConfig.data = { productSnap, windowTitle, isNewProductSnap };
     const dialogRef = this.dialog.open(AddEditProductSnapComponent, dialogConfig);
   }
 
