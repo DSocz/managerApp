@@ -14,6 +14,7 @@ public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "managerapp.product_id_product_seq")
     private Long productId;
+    @Column(unique = true)
     private String name;
     private String inci;
 

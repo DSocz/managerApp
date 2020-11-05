@@ -16,6 +16,7 @@ public class Brand implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "managerapp.brand_brandid_seq")
     private Long brandId;
+    @Column(unique = true)
     private String brandName;
     private Boolean crueltyFree;
 

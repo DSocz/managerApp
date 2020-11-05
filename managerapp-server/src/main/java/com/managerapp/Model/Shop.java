@@ -13,6 +13,7 @@ public class Shop implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "managerapp.shop_shop_id_seq")
     private Long shopId;
+    @Column(unique = true)
     private String name;
     private String url;
 }
