@@ -13,6 +13,6 @@ public interface IngredientRepository extends CrudRepository<Ingredient, Long> {
 
     Ingredient save(Ingredient ingredient);
 
-    @Query("SELECT i FROM Ingredient i INNER JOIN FETCH i.tag_snap where i.ingredientName IN (:ingredientName)")
+    @Query("SELECT i FROM Ingredient i INNER JOIN FETCH i.tags where i.ingredientName IN (:ingredientName)")
     List<Ingredient> fingByIngredientName(@Param("ingredientName")List<String> ingredientName);
 }
