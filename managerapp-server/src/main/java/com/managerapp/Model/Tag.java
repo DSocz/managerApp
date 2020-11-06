@@ -11,6 +11,10 @@ import java.util.Set;
 @Table(name = "tag", schema = "managerapp")
 public class Tag {
 
+    public static int GREEN_TAG = 1;
+    public static int YELLOW_TAG = 2;
+    public static int RED_TAG = 3;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "managerapp.tag_tag_id_seq")
     private Long tagId;

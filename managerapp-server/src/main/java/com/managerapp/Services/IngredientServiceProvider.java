@@ -1,6 +1,8 @@
 package com.managerapp.Services;
 
+import com.managerapp.Model.DTO.CosmeticCompositionDTO;
 import com.managerapp.Model.Ingredient;
+import com.managerapp.Model.Tag;
 import com.managerapp.Repositories.IngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,16 +19,37 @@ public class IngredientServiceProvider implements IngredientService {
     IngredientRepository ingredientRepository;
     
     @Override
-    public void createUpdateWildcardInci(String rawInciList, boolean wildcard, String separator) {
+    public void createUpdateWildcardInci(CosmeticCompositionDTO cC) {
 
-        List<Ingredient> inciList = Stream.of(rawInciList.split(separator))
-                .map(inci -> new Ingredient(inci.toLowerCase().trim(), wildcard))
-                .collect(Collectors.toList());
+        List<Ingredient> inciList = getIngredientsFromCosmeticComposition(cC);
 
         List<Ingredient> allDefinedIngredients = ingredientRepository.findAll();
 
         inciList.forEach(inci -> setInciId(inci, allDefinedIngredients));
         inciList.forEach(inci -> ingredientRepository.save(inci));
+    }
+
+    @Override
+    public List<Ingredient> checkCosmeticComposition(CosmeticCompositionDTO cC) {
+
+        List<Ingredient> cosmeticCompositionInciList = getIngredientsFromCosmeticComposition(cC);
+
+        List<Ingredient> ingredientList = ingredientRepository
+                .fingByIngredientName(cosmeticCompositionInciList.stream().map(Ingredient::getIngredientName).collect(Collectors.toList()));
+
+        for (Ingredient ingredient: ingredientList) {
+            if(ingredient.getTags().stream().map(Tag::getRate).collect(Collectors.toList())
+                    .stream().allMatch(r -> r.equals(Tag.GREEN_TAG)) || ingredient.getWildcard()){
+                ingredient.setRate(Ingredient.GREEN_INGREDIENT);
+            } else if(ingredient.getTags().stream().map(Tag::getRate).collect(Collectors.toList())
+                    .stream().allMatch(r -> r.equals(Tag.RED_TAG))) {
+                ingredient.setRate(Ingredient.RED_INGREDIENT);
+            } else {
+                ingredient.setRate(Ingredient.YELLOW_INGREDIENT);
+            }
+        }
+
+        return ingredientList;
     }
 
     private void setInciId(Ingredient inci, List<Ingredient> allDefinedIngredients) {
@@ -39,5 +62,11 @@ public class IngredientServiceProvider implements IngredientService {
             inci.setIngredientId(existingIngredient.get().getIngredientId());
             inci.setTags(existingIngredient.get().getTags());
         }
+    }
+
+    private List<Ingredient> getIngredientsFromCosmeticComposition(CosmeticCompositionDTO cC) {
+        return Stream.of(cC.getCosmeticComposition().split(cC.getSeparator()))
+                .map(inci -> new Ingredient(inci.toLowerCase().trim(), cC.isWildcard()))
+                .collect(Collectors.toList());
     }
 }
