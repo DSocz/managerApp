@@ -3,10 +3,10 @@ import { Observable } from 'rxjs'
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddEditProductSnapComponent } from './add-edit-product-snap/add-edit-product-snap.component';
 
-import { ProductService } from '../../service/product.service';
-import { ProductSnap } from '../../model/product-snap';
-import { Product } from '../../model/product';
-import { Brand } from '../../model/brand';
+import { ProductService } from '../../../service/product.service';
+import { ProductSnap } from '../../../model/product-snap';
+import { Product } from '../../../model/product';
+import { Brand } from '../../../model/brand';
 
 @Component({
   selector: 'app-product-snap',

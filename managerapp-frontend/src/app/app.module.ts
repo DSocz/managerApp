@@ -13,14 +13,14 @@ import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomepageComponent } from './homepage/homepage.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ProductsComponent } from './products/products.component';
-import { DeleteConfirmationDialogComponent } from './confirmationDialogs/delete-confirmation-dialog/delete-confirmation-dialog.component';
-import { DeleteConfirmationDialogService } from './confirmationDialogs/delete-confirmation-dialog/delete-confirmation-dialog.service';
-import { AddProductComponent } from './products/add-product/add-product.component';
-import { ProductSnapComponent } from './products/product-snap/product-snap.component';
-import { AddEditProductSnapComponent } from './products/product-snap/add-edit-product-snap/add-edit-product-snap.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ProductsComponent } from './components/products/products.component';
+import { DeleteConfirmationDialogComponent } from './components/confirmationDialogs/delete-confirmation-dialog/delete-confirmation-dialog.component';
+import { DeleteConfirmationDialogService } from './components/confirmationDialogs/delete-confirmation-dialog/delete-confirmation-dialog.service';
+import { AddProductComponent } from './components/products/add-product/add-product.component';
+import { ProductSnapComponent } from './components/products/product-snap/product-snap.component';
+import { AddEditProductSnapComponent } from './components/products/product-snap/add-edit-product-snap/add-edit-product-snap.component';
 
 
 @NgModule({

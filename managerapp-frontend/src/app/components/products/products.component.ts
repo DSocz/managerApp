@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 import { AddProductComponent } from './add-product/add-product.component';
-import { ProductService } from '../service/product.service';
-import { Product } from '../model/product';
+import { ProductService } from '../../service/product.service';
+import { Product } from '../../model/product';
 import { ProductsServiceService } from './products-service.service';
 
 @Component({

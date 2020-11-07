@@ -1,11 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ProductSnap } from '../../../model/product-snap';
-import { Shop } from '../../../model/shop';
-import { Product } from '../../../model/product';
-import { ProductService } from '../../../service/product.service';
-import { ShopService } from '../../../service/shop.service';
+import { ProductSnap } from '../../../../model/product-snap';
+import { Shop } from '../../../../model/shop';
+import { Product } from '../../../../model/product';
+import { ProductService } from '../../../../service/product.service';
+import { ShopService } from '../../../../service/shop.service';
 
 @Component({
   selector: 'app-add-edit-product-snap',

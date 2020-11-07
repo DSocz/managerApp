@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Product } from '../model/product';
+import { Product } from '../../model/product';
 import { Observable } from 'rxjs';
 import { DeleteConfirmationDialogService } from '../confirmationDialogs/delete-confirmation-dialog/delete-confirmation-dialog.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ProductService } from '../service/product.service';
+import { ProductService } from '../../service/product.service';
 
 @Injectable({
   providedIn: 'root'

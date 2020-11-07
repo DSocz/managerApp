@@ -2,10 +2,10 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { Product } from '../../model/product';
-import { Brand } from '../../model/brand';
-import { BrandService } from '../../service/brand.service';
-import { ProductService } from '../../service/product.service';
+import { Product } from '../../../model/product';
+import { Brand } from '../../../model/brand';
+import { BrandService } from '../../../service/brand.service';
+import { ProductService } from '../../../service/product.service';
 
 @Component({
   selector: 'app-add-product',
